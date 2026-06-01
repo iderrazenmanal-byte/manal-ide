@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM Pro - Gestion de Ventes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Icônes -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #f8f9fa; }
+        .odoo-purple { background-color: #71639e; }
+        .odoo-dark { background-color: #2c3e50; }
+        .kanban-column { min-width: 320px; max-width: 320px; }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden">
+
+    <!-- SIDEBAR (Style Odoo Dark) -->
+    <aside class="odoo-dark text-gray-300 w-16 flex flex-col items-center py-4 space-y-6">
+        <div class="bg-white/10 p-2 rounded-lg">
+            <i data-lucide="layout-grid" class="text-white"></i>
+        </div>
+        <nav class="flex flex-col space-y-4">
+            <a href="#" class="p-2 hover:bg-white/10 rounded transition text-white"><i data-lucide="home"></i></a>
+            <a href="#" class="p-2 hover:bg-white/10 rounded transition"><i data-lucide="users"></i></a>
+            <a href="#" class="p-2 hover:bg-white/10 rounded transition"><i data-lucide="package"></i></a>
+            <a href="#" class="p-2 hover:bg-white/10 rounded transition"><i data-lucide="bar-chart-3"></i></a>
+            <a href="#" class="p-2 hover:bg-white/10 rounded transition"><i data-lucide="settings"></i></a>
+        </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-1 flex flex-col overflow-hidden">
+        
+        <!-- HEADER / NAVBAR -->
+        <header class="bg-white border-b px-6 py-3 flex justify-between items-center shadow-sm">
+            <div class="flex items-center space-x-4">
+                <h1 class="text-xl font-bold text-gray-700 uppercase tracking-tight">CRM / Pipeline</h1>
+                <button class="odoo-purple text-white px-4 py-1.5 rounded text-sm font-medium hover:opacity-90 transition">
+                    CRÉER
+                </button>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <input type="text" placeholder="Recherche..." class="pl-10 pr-4 py-1.5 border rounded-md bg-gray-50 text-sm focus:outline-none focus:ring-2 focus:ring-purple-400 w-64">
+                    <i data-lucide="search" class="absolute left-3 top-2 w-4 h-4 text-gray-400"></i>
+                </div>
+                <img src="https://ui-avatars.com/api/?name=Admin+User&background=71639e&color=fff" class="w-8 h-8 rounded-full border shadow-sm cursor-pointer">
+            </div>
+        </header>
+
+        <!-- CONTROL BAR (Filters & Views) -->
+        <div class="bg-white border-b px-6 py-2 flex justify-between items-center text-sm text-gray-600">
+            <div class="flex space-x-6">
+                <button class="flex items-center hover:text-purple-700 font-medium"><i data-lucide="filter" class="w-4 h-4 mr-1"></i> Filtres</button>
+                <button class="flex items-center hover:text-purple-700 font-medium"><i data-lucide="list-tree" class="w-4 h-4 mr-1"></i> Regrouper par</button>
+                <button class="flex items-center hover:text-purple-700 font-medium"><i data-lucide="star" class="w-4 h-4 mr-1"></i> Favoris</button>
+            </div>
+            <div class="flex bg-gray-100 p-1 rounded-md">
+                <button class="p-1.5 bg-white shadow-sm rounded text-purple-700"><i data-lucide="layout-dashboard" class="w-4 h-4"></i></button>
+                <button class="p-1.5 hover:bg-gray-200 rounded"><i data-lucide="list" class="w-4 h-4"></i></button>
+                <button class="p-1.5 hover:bg-gray-200 rounded"><i data-lucide="calendar" class="w-4 h-4"></i></button>
+            </div>
+        </div>
+
+        <!-- KANBAN BOARD -->
+        <div class="flex-1 overflow-x-auto p-6 flex space-x-4">
+            
+            <!-- COLUMN 1: NOUVEAU -->
+            <div class="kanban-column flex flex-col space-y-3">
+                <div class="flex justify-between items-center border-b-2 border-blue-400 pb-2 mb-2">
+                    <span class="font-bold text-gray-700">NOUVEAU</span>
+                    <span class="bg-gray-200 text-gray-600 px-2 py-0.5 rounded text-xs font-bold">12 400 €</span>
+                </div>
+                
+                <!-- Card 1 -->
+                <div class="bg-white p-3 rounded shadow-sm border-l-4 border-blue-400 hover:shadow-md cursor-pointer transition">
+                    <h3 class="font-semibold text-gray-800">Cuisine Américaine - Loft Lyon</h3>
+                    <p class="text-xs text-gray-500 mt-1">Meubles & Design SA</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-[#00A09D] font-bold text-sm">4 500 €</span>
+                        <div class="flex -space-x-2">
+                            <img src="https://ui-avatars.com/api/?name=Jean+M&background=random" class="w-6 h-6 rounded-full border border-white">
+                        </div>
+                    </div>
+                    <div class="mt-2 flex space-x-1">
+                        <span class="bg-blue-100 text-blue-700 text-[10px] px-2 py-0.5 rounded uppercase font-bold">Mobilier</span>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white p-3 rounded shadow-sm border-l-4 border-blue-400 hover:shadow-md cursor-pointer transition">
+                    <h3 class="font-semibold text-gray-800">Refonte Site E-commerce</h3>
+                    <p class="text-xs text-gray-500 mt-1">Tech Solutions</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-[#00A09D] font-bold text-sm">7 900 €</span>
+                        <div class="flex items-center space-x-1">
+                             <i data-lucide="star" class="w-3 h-3 text-yellow-400 fill-yellow-400"></i>
+                             <i data-lucide="star" class="w-3 h-3 text-yellow-400 fill-yellow-400"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COLUMN 2: QUALIFIÉ -->
+            <div class="kanban-column flex flex-col space-y-3">
+                <div class="flex justify-between items-center border-b-2 border-orange-400 pb-2 mb-2">
+                    <span class="font-bold text-gray-700">QUALIFIÉ</span>
+                    <span class="bg-gray-200 text-gray-600 px-2 py-0.5 rounded text-xs font-bold">25 000 €</span>
+                </div>
+                
+                <div class="bg-white p-3 rounded shadow-sm border-l-4 border-orange-400 hover:shadow-md cursor-pointer transition">
+                    <h3 class="font-semibold text-gray-800">Installation Bureaux OpenSpace</h3>
+                    <p class="text-xs text-gray-500 mt-1">SNCF Gares & Connexions</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-[#00A09D] font-bold text-sm">25 000 €</span>
+                        <span class="text-[10px] bg-red-100 text-red-600 px-2 py-0.5 rounded font-bold uppercase">Urgent</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COLUMN 3: PROPOSITION -->
+            <div class="kanban-column flex flex-col space-y-3">
+                <div class="flex justify-between items-center border-b-2 border-purple-400 pb-2 mb-2">
+                    <span class="font-bold text-gray-700">PROPOSITION</span>
+                    <span class="bg-gray-200 text-gray-600 px-2 py-0.5 rounded text-xs font-bold">8 200 €</span>
+                </div>
+                
+                <div class="bg-white p-3 rounded shadow-sm border-l-4 border-purple-400 hover:shadow-md cursor-pointer transition opacity-75">
+                    <h3 class="font-semibold text-gray-800">Contrat Maintenance Annuelle</h3>
+                    <p class="text-xs text-gray-500 mt-1">Hotel Ritz</p>
+                    <div class="flex justify-between items-center mt-4 text-gray-400 italic text-xs">
+                        Attente signature
+                    </div>
+                </div>
+            </div>
+
+             <!-- COLUMN 4: GAGNÉ -->
+             <div class="kanban-column flex flex-col space-y-3">
+                <div class="flex justify-between items-center border-b-2 border-green-500 pb-2 mb-2">
+                    <span class="font-bold text-gray-700 uppercase">Gagné</span>
+                    <span class="bg-green-100 text-green-700 px-2 py-0.5 rounded text-xs font-bold">54 000 €</span>
+                </div>
+                <div class="bg-white p-3 rounded shadow-sm border-l-4 border-green-500">
+                    <h3 class="font-semibold text-gray-800">Aménagement Hôtel de Ville</h3>
+                    <p class="text-xs text-gray-500 mt-1">Mairie de Bordeaux</p>
+                    <div class="flex justify-between items-center mt-4">
+                        <span class="text-green-600 font-bold text-sm">54 000 €</span>
+                        <i data-lucide="check-circle-2" class="text-green-500 w-5 h-5"></i>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Script pour activer les icônes Lucide -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
